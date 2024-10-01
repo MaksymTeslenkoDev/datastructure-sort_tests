@@ -18,6 +18,14 @@ class DataStructure {
     delete(value) {
         throw new Error('Method delete() must be implemented.');
     }
+
+    clear() {
+        throw new Error('Method clear() must be implemented.');
+    }
+
+    serialize() {
+        throw new Error('Method serialize() must be implemented.');
+    }
 }
 
 module.exports = DataStructure;

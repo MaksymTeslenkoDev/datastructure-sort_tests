@@ -4,11 +4,11 @@ const DataStructure = require('./dataStructure');
 
 class Node {
   constructor(value, tree) {
-      this.value = value;
-      this.color = 'red'; // New nodes are red by default
-      this.left = tree.nil;
-      this.right = tree.nil;
-      this.parent = tree.nil;
+    this.value = value;
+    this.color = 'red'; // New nodes are red by default
+    this.left = tree.nil;
+    this.right = tree.nil;
+    this.parent = tree.nil;
   }
 }
 
@@ -22,7 +22,7 @@ class RedBlackTree extends DataStructure {
     this.length = 0;
   }
 
-  getLength(){
+  getLength() {
     return this.length;
   }
 
@@ -238,8 +238,25 @@ class RedBlackTree extends DataStructure {
   }
   // Clear method to reset the tree
   clear() {
-    this.root = this.nil;
+    this.root = null;
     this.length = 0;
+  }
+
+  serialize() {
+    const traverse = (node) => {
+      if (node === this.nil) {
+        return null;
+      }
+
+      return {
+        value: node.value,
+        color: node.color,
+        left: traverse(node.left),
+        right: traverse(node.right),
+      };
+    };
+
+    return traverse(this.root);
   }
 }
 module.exports = RedBlackTree;
