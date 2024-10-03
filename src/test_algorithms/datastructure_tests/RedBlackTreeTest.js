@@ -11,7 +11,7 @@ class RedBlackTreeTest extends DataStructureTest {
     this.name = "Red Black Tree";
     this.ds = RedBlackTree;
     this.amount = 100;
-    this.dataSetLengthIncrement = 250000;
+    this.dataSetLengthIncrement = 100000;
     this.directoryPath = path.join(appPath,'data','RedBlackTree');
   }
 

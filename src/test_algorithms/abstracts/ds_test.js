@@ -24,7 +24,7 @@ class DataStructureTest {
 
   async perfomTests() {
     const iterator = this.generateDataSets();
-    for await (const { dataSet, valueToSearchDelete } of iterator) {
+    for await (const { dataSet, valueToSearchDelete, generateTime } of iterator) {
       const size = dataSet.getLength();
 
       const value = getRandomInt(1, 500000);
@@ -47,6 +47,7 @@ class DataStructureTest {
         insertTime,
         searchTime,
         deleteTime,
+        generateTime
       };
 
       console.log(
@@ -61,10 +62,10 @@ class DataStructureTest {
 
   async prepateResultsFile() {
     const results = this.results;
-    let csvContent = 'Size,InsertTime,SearchTime,DeleteTime\n';
+    let csvContent = 'Size,InsertTime,SearchTime,DeleteTime,GenerateTime\n';
     for (const size in results) {
       const parsedSize = parseInt(size);
-      csvContent += `${parsedSize},${results[parsedSize].insertTime},${results[parsedSize].searchTime},${results[parsedSize].deleteTime}\n`;
+      csvContent += `${parsedSize},${results[parsedSize].insertTime},${results[parsedSize].searchTime},${results[parsedSize].deleteTime},${results[parsedSize].generateTime}\n`;
     }
     fs.writeFileSync(`${this.name}_performance_results.csv`, csvContent);
     console.log(`\nData saved to ${this.name}_performance_results.csv`);

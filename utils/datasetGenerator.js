@@ -23,7 +23,7 @@ function* generateDataSets({ amount, increment, ds }) {
     const endTime = performance.now();
     let generateTime = endTime - startTime;
     console.log(`Size: ${size}, Generate Time: ${generateTime.toFixed(4)}`);
-    yield { dataSet, valueToSearchDelete: random };
+    yield { dataSet, valueToSearchDelete: random, generateTime };
   }
   dataSet.clear();
 }
